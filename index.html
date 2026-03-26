@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>HSBTE 1st Semester Results</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap');
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Outfit',sans-serif;
+}
+
+body{
+background:linear-gradient(to right top,#141e30,#243b55);
+color:white;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+}
+
+/* HEADER */
+
+header{
+text-align:center;
+padding:2rem 1rem;
+background:rgba(255,255,255,0.05);
+position:relative;
+border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+header h1{
+font-size:2.2rem;
+color:#00c6ff;
+}
+
+header h2{
+font-size:1rem;
+font-weight:300;
+}
+
+/* MENU BUTTON */
+
+.menu-btn{
+position:absolute;
+left:20px;
+top:20px;
+font-size:28px;
+cursor:pointer;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+position:fixed;
+left:-260px;
+top:0;
+width:260px;
+height:100%;
+background:#0f2027;
+transition:.4s;
+padding-top:60px;
+z-index:1000;
+}
+
+.sidebar a{
+display:block;
+padding:15px 25px;
+color:white;
+text-decoration:none;
+border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+.sidebar a:hover{
+background:#203a43;
+}
+
+.close-btn{
+position:absolute;
+top:15px;
+right:20px;
+font-size:22px;
+cursor:pointer;
+}
+
+/* OVERLAY */
+
+.overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.5);
+display:none;
+}
+
+/* MAIN */
+
+main{
+flex:1;
+display:flex;
+flex-direction:column;
+align-items:center;
+padding:30px;
+}
+
+/* CARD */
+
+.card{
+background:rgba(255,255,255,.08);
+padding:30px;
+border-radius:18px;
+width:420px;
+max-width:90%;
+text-align:center;
+margin-top:20px;
+box-shadow:0 8px 25px rgba(0,0,0,.4);
+}
+
+/* INPUT */
+
+input{
+width:100%;
+padding:12px;
+margin-top:12px;
+border-radius:10px;
+border:none;
+outline:none;
+}
+
+/* BUTTON */
+
+button{
+margin-top:15px;
+padding:12px 28px;
+border:none;
+border-radius:10px;
+background:linear-gradient(to right,#00c6ff,#0072ff);
+color:white;
+cursor:pointer;
+font-weight:bold;
+}
+
+/* MESSAGE */
+
+.note{
+margin-top:10px;
+min-height:20px;
+}
+
+/* RESULT IMAGE */
+
+#resultImage{
+margin-top:20px;
+max-width:100%;
+border-radius:12px;
+display:none;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:15px;
+background:rgba(255,255,255,.05);
+}
+
+footer .line1{
+font-weight:500;
+}
+
+footer .line2{
+font-size:.85rem;
+opacity:.7;
+}
+
+/* SECTIONS */
+
+.section{
+display:none;
+}
+
+.active{
+display:block;
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- SIDEBAR -->
+
+<div class="sidebar" id="sidebar">
+
+<div class="close-btn" onclick="closeMenu()">✖</div>
+
+<a onclick="showSection('home')">Home</a>
+
+<a onclick="showSection('links')">Other Links</a>
+
+<a onclick="showSection('about')">About Us</a>
+
+<hr>
+
+<a href="../sem2-results/index.html">2nd Semester</a>
+
+<a href="../sem3-results/index.html">3rd Semester</a>
+
+</div>
+
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+
+<!-- HEADER -->
+
+<header>
+
+<div class="menu-btn" onclick="openMenu()">☰</div>
+
+<h1>HSBTE May June 2025 Results – 1st Semester</h1>
+
+<h2>Govt Polytechnic Dhangar, Fatehabad</h2>
+
+</header>
+
+
+<!-- HOME SECTION -->
+
+<main id="home" class="section active">
+
+<div class="card" id="loginCard">
+
+<h3>🔒 Login Required</h3>
+
+<input id="email" placeholder="Enter Email">
+
+<input id="password" type="password" placeholder="Enter Password">
+
+<button onclick="login()">Access Site</button>
+
+<div class="note" id="loginMsg"></div>
+
+</div>
+
+
+<div class="card" id="resultCard" style="display:none">
+
+<label>Enter Your Roll Number:</label>
+
+<input id="roll" placeholder="241650800001 – 241650800068">
+
+<button onclick="checkResult()">View Result</button>
+
+<div class="note" id="msg"></div>
+
+<img id="resultImage">
+
+</div>
+
+</main>
+
+
+<!-- OTHER LINKS -->
+
+<main id="links" class="section">
+
+<div class="card">
+
+<h3>Other Semester Result Links</h3>
+
+<br>
+
+<a href="../sem2-results/index.html">2nd Semester Results</a>
+
+<br><br>
+
+<a href="../sem3-results/index.html">3rd Semester Results</a>
+
+</div>
+
+</main>
+
+
+<!-- ABOUT -->
+
+<main id="about" class="section">
+
+<div class="card">
+
+<h3>About Developer</h3>
+
+<br>
+
+<p>Name: Vipul Bishnoi</p>
+
+<p>Course: Diploma in Computer Engineering</p>
+
+<p>Email: vipulbishnoi2992@gmail.com</p>
+
+<p>Phone: 94XXXXXX07</p>
+
+</div>
+
+</main>
+
+
+<footer>
+
+<div class="line1">
+© 2025 Vipul Bishnoi
+</div>
+
+<div class="line2">
+All Rights Reserved
+</div>
+
+</footer>
+
+
+<script type="module">
+
+import { firebaseConfig }
+from "./auth-config.js";
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getAuth,
+signInWithEmailAndPassword,
+onAuthStateChanged
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+
+/* MENU CONTROL */
+
+window.openMenu=function(){
+document.getElementById("sidebar").style.left="0";
+document.getElementById("overlay").style.display="block";
+}
+
+window.closeMenu=function(){
+document.getElementById("sidebar").style.left="-260px";
+document.getElementById("overlay").style.display="none";
+}
+
+
+/* SECTION SWITCH */
+
+window.showSection=function(section){
+
+document.querySelectorAll(".section")
+.forEach(sec=>sec.classList.remove("active"));
+
+document.getElementById(section)
+.classList.add("active");
+
+closeMenu();
+
+}
+
+
+/* LOGIN */
+
+window.login=function(){
+
+const email=document.getElementById("email").value;
+
+const password=document.getElementById("password").value;
+
+
+signInWithEmailAndPassword(auth,email,password)
+
+.then(()=>{
+
+document.getElementById("loginCard").style.display="none";
+
+document.getElementById("resultCard").style.display="block";
+
+})
+
+.catch(()=>{
+
+document.getElementById("loginMsg").innerText="Invalid Email or Password";
+
+});
+
+};
+
+
+/* AUTO LOGIN CHECK */
+
+onAuthStateChanged(auth,user=>{
+
+if(user){
+
+document.getElementById("loginCard").style.display="none";
+
+document.getElementById("resultCard").style.display="block";
+
+}
+
+});
+
+
+/* RESULT CHECK */
+
+window.checkResult=function(){
+
+let roll=document.getElementById("roll").value;
+
+let imagePath="results/"+roll+"/result.jpg";
+
+
+if(roll>=241650800001 && roll<=241650800068){
+
+let img=document.getElementById("resultImage");
+
+img.src=imagePath;
+
+
+img.onload=function(){
+
+img.style.display="block";
+
+document.getElementById("msg").innerText="Result Found";
+
+};
+
+
+img.onerror=function(){
+
+img.style.display="none";
+
+document.getElementById("msg").innerText="Result Not Available";
+
+};
+
+}
+
+else{
+
+document.getElementById("msg").innerText="Invalid Roll Number";
+
+}
+
+};
+
+</script>
+
+
+</body>
+</html>
